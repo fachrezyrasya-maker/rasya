@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Rasya Achmad Fachrezy | TKJ</title>
+    <!-- FontAwesome untuk ikon media sosial -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- RESET & VARIABLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-color: #080710;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --neon-blue: #00f3ff;
+            --neon-pink: #ff007f;
+            --text-color: #ffffff;
+            --text-dim: #a0a0a0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(8, 7, 16, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            padding-top: 80px;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-text h3 {
+            font-size: 1.5rem;
+            color: var(--neon-pink);
+            text-shadow: 0 0 8px var(--neon-pink);
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin: 10px 0;
+            color: var(--neon-blue);
+            text-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .hero-text h2 {
+            font-size: 1.8rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            line-height: 1.6;
+            color: var(--text-dim);
+            margin-bottom: 30px;
+        }
+
+        /* FOTO PROFILE DENGAN NEON GLOW */
+        .hero-img {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-img img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            z-index: 1;
+            border: 2px solid var(--neon-blue);
+        }
+
+        .hero-img::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+            animation: spin 4s linear infinite;
+            filter: blur(15px);
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            color: var(--neon-blue);
+            border: 2px solid var(--neon-blue);
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 0 10px var(--neon-blue);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--neon-blue);
+            color: var(--bg-color);
+            box-shadow: 0 0 25px var(--neon-blue);
+        }
+
+        /* --- SKILLS SECTION --- */
+        .skills {
+            padding: 80px 8%;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.4s;
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
+        }
+
+        /* --- GALERI FOTO --- */
+        .gallery {
+            padding: 80px 8%;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+            height: 200px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- CONTACT & SOCIAL MEDIA --- */
+        .contact {
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px var(--neon-blue);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--card-bg);
+            color: var(--text-color);
+            font-size: 1.3rem;
+            text-decoration: none;
+            border: 1px solid var(--neon-pink);
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            background: var(--neon-pink);
+            color: #fff;
+            box-shadow: 0 0 25px var(--neon-pink);
+            transform: translateY(-5px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Breakpoint */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                justify-content: center;
+                gap: 40px;
+            }
+            .hero-img {
+                width: 250px;
+                height: 250px;
+            }
+            .hero-img img {
+                width: 230px;
+                height: 230px;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">RAF.TECH</div>
+        <ul class="nav-links">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#skills">Keahlian</a></li>
+            <li><a href="#gallery">Galeri TKJ</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h3>Halo, Saya</h3>
+            <h1>Rasya Achmad F.</h1>
+            <h2>Teknik Komputer & Jaringan</h2>
+            <p>Siswa TKJ yang berfokus pada Pengoperasian Jaringan, Mikrotik, Cisco, Server, Hardware Komputer, dan Troubleshooting Jaringan.</p>
+            <a href="#contact" class="btn">Hubungi Saya</a>
+        </div>
+        
+        <!-- FOTO PROFIL -->
+        <div class="hero-img">
+            <!-- Kamu bisa mengganti URL gambar di bawah ini dengan foto kamu -->
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=500" alt="Rasya Achmad Fachrezy">
+        </div>
+    </section>
+
+    <!-- KEAHLIAN / SKILLS -->
+    <section class="skills" id="skills">
+        <h2 class="section-title">Keahlian TKJ</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-network-wired"></i>
+                <h3>Jaringan Komputer</h3>
+                <p>Konfigurasi Routing, Switching, VLAN, dan Subnetting IP Address.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-server"></i>
+                <h3>Mikrotik & Cisco</h3>
+                <p>Pengaturan Bandwidth Management, Firewall, Hotspot, dan VPN.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-desktop"></i>
+                <h3>Hardware & OS</h3>
+                <p>Rakit PC, Maintenance Hardware, dan Instalasi OS (Windows/Linux).</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-shield-halved"></i>
+                <h3>Keamanan Jaringan</h3>
+                <p>Proteksi jaringan dasar, monitoring traffic, dan Troubleshooting.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERI KEGIATAN -->
+    <section class="gallery" id="gallery">
+        <h2 class="section-title">Dokumentasi & Kegiatan</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=600" alt="Praktik Jaringan">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=600" alt="Server Room">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=600" alt="Rakit PC">
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAK & MEDIA SOSIAL -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Hubungi Saya</h2>
+        
+        <div class="contact-info">
+            <a href="https://wa.me/6282299358549" target="_blank">
+                <i class="fab fa-whatsapp" style="color: #25D366; font-size: 1.5rem;"></i> 082299358549
+            </a>
+            <a href="mailto:rasyaachmad901@gmail.com">
+                <i class="fas fa-envelope" style="color: var(--neon-blue); font-size: 1.5rem;"></i> rasyaachmad901@gmail.com
+            </a>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.tiktok.com/@allz258?_r=1&_t=ZS-98D19LsKntB" target="_blank" class="social-btn" title="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://www.instagram.com/paniaja?igsh=c2cxeHJ1OXhuN2U3" target="_blank" class="social-btn" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://youtube.com/@acaaca?si=WUhuzIp4cvvoBv92" target="_blank" class="social-btn" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.facebook.com/share/191mWooASu/" target="_blank" class="social-btn" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Rasya Achmad Fachrezy. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
